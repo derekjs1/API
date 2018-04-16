@@ -1,0 +1,85 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'D:\\Server\\node.exe',
+1 verbose cli   'D:\\Server\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '8.1.0' ]
+2 info using npm@3.10.10
+3 info using node@v6.11.4
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData 8.1.0
+8 silly fetchNamedPackageData 8.1.0
+9 silly mapToRegistry name 8.1.0
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry data Result {
+12 silly mapToRegistry   raw: '8.1.0',
+12 silly mapToRegistry   scope: null,
+12 silly mapToRegistry   escapedName: '8.1.0',
+12 silly mapToRegistry   name: '8.1.0',
+12 silly mapToRegistry   rawSpec: '',
+12 silly mapToRegistry   spec: 'latest',
+12 silly mapToRegistry   type: 'tag' }
+13 silly mapToRegistry uri https://registry.npmjs.org/8.1.0
+14 verbose request uri https://registry.npmjs.org/8.1.0
+15 verbose request no auth needed
+16 info attempt registry request try #1 at 6:00:13 PM
+17 verbose request id c821282792e5210b
+18 http request GET https://registry.npmjs.org/8.1.0
+19 http 200 https://registry.npmjs.org/8.1.0
+20 verbose headers { 'content-type': 'application/json; charset=UTF-8',
+20 verbose headers   server: 'UploadServer',
+20 verbose headers   'cache-control': 'max-age=300',
+20 verbose headers   'last-modified': 'Wed, 17 Jan 2018 1:10:13 GMT',
+20 verbose headers   etag: '"5a5ea275-18c"',
+20 verbose headers   'x-npm-region': 'US-East',
+20 verbose headers   'content-encoding': 'gzip',
+20 verbose headers   'content-length': '246',
+20 verbose headers   'accept-ranges': 'bytes',
+20 verbose headers   date: 'Tue, 13 Feb 2018 23:00:13 GMT',
+20 verbose headers   via: '1.1 varnish',
+20 verbose headers   age: '0',
+20 verbose headers   connection: 'keep-alive',
+20 verbose headers   'x-served-by': 'cache-mia17629-MIA',
+20 verbose headers   'x-cache': 'MISS',
+20 verbose headers   'x-cache-hits': '0',
+20 verbose headers   'x-timer': 'S1518562813.332476,VS0,VE102',
+20 verbose headers   vary: 'Accept-Encoding, Accept' }
+21 silly get cb [ 200,
+21 silly get   { 'content-type': 'application/json; charset=UTF-8',
+21 silly get     server: 'UploadServer',
+21 silly get     'cache-control': 'max-age=300',
+21 silly get     'last-modified': 'Wed, 17 Jan 2018 1:10:13 GMT',
+21 silly get     etag: '"5a5ea275-18c"',
+21 silly get     'x-npm-region': 'US-East',
+21 silly get     'content-encoding': 'gzip',
+21 silly get     'content-length': '246',
+21 silly get     'accept-ranges': 'bytes',
+21 silly get     date: 'Tue, 13 Feb 2018 23:00:13 GMT',
+21 silly get     via: '1.1 varnish',
+21 silly get     age: '0',
+21 silly get     connection: 'keep-alive',
+21 silly get     'x-served-by': 'cache-mia17629-MIA',
+21 silly get     'x-cache': 'MISS',
+21 silly get     'x-cache-hits': '0',
+21 silly get     'x-timer': 'S1518562813.332476,VS0,VE102',
+21 silly get     vary: 'Accept-Encoding, Accept' } ]
+22 verbose get saving 8.1.0 to C:\Users\djsfi\AppData\Roaming\npm-cache\registry.npmjs.org\8.1.0\.cache.json
+23 verbose correctMkdir C:\Users\djsfi\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+24 verbose stack TypeError: Cannot convert undefined or null to object
+24 verbose stack     at pickVersionFromRegistryDocument (D:\Server\node_modules\npm\lib\fetch-package-metadata.js:125:29)
+24 verbose stack     at D:\Server\node_modules\npm\node_modules\iferr\index.js:13:50
+24 verbose stack     at D:\Server\node_modules\npm\lib\utils\pulse-till-done.js:20:8
+24 verbose stack     at saved (D:\Server\node_modules\npm\lib\cache\caching-client.js:174:7)
+24 verbose stack     at D:\Server\node_modules\npm\node_modules\graceful-fs\polyfills.js:241:18
+24 verbose stack     at FSReqWrap.oncomplete (fs.js:123:15)
+25 verbose cwd D:\mARkit\API
+26 error Windows_NT 10.0.16299
+27 error argv "D:\\Server\\node.exe" "D:\\Server\\node_modules\\npm\\bin\\npm-cli.js" "install" "8.1.0"
+28 error node v6.11.4
+29 error npm  v3.10.10
+30 error Cannot convert undefined or null to object
+31 error If you need help, you may report this error at:
+31 error     <https://github.com/npm/npm/issues>
+32 verbose exit [ 1, true ]

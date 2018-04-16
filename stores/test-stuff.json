@@ -1,0 +1,136 @@
+{
+    "logo": {
+        "url": "http://markitapi.com/public/default.jpg",
+        "path": "D:\\mARkit\\API\\stores\\default\\default.jpg"
+    },
+    "gps": {
+        "longitude": 28.602928,
+        "latitude": -81.200151
+    },
+    "business_hrs": [
+        {
+            "hours": [
+                {
+                    "open": 8,
+                    "open_min": 8,
+                    "closed": 8,
+                    "closed_min": 8,
+                    "_id": "5ad411a83490f219c42784d4"
+                }
+            ],
+            "day": "Mon",
+            "_id": "5ad411a83490f219c42784d5"
+        },
+        {
+            "hours": [
+                {
+                    "open": 8,
+                    "open_min": 8,
+                    "closed": 8,
+                    "closed_min": 8,
+                    "_id": "5ad411a83490f219c42784d2"
+                }
+            ],
+            "day": "Tue",
+            "_id": "5ad411a83490f219c42784d3"
+        },
+        {
+            "hours": [
+                {
+                    "open": 8,
+                    "open_min": 8,
+                    "closed": 8,
+                    "closed_min": 8,
+                    "_id": "5ad411a83490f219c42784d0"
+                }
+            ],
+            "day": "Wed",
+            "_id": "5ad411a83490f219c42784d1"
+        },
+        {
+            "hours": [
+                {
+                    "open": 8,
+                    "open_min": 8,
+                    "closed": 8,
+                    "closed_min": 8,
+                    "_id": "5ad411a83490f219c42784ce"
+                }
+            ],
+            "day": "Thu",
+            "_id": "5ad411a83490f219c42784cf"
+        },
+        {
+            "hours": [
+                {
+                    "open": 8,
+                    "open_min": 8,
+                    "closed": 8,
+                    "closed_min": 8,
+                    "_id": "5ad411a83490f219c42784cc"
+                }
+            ],
+            "day": "Fri",
+            "_id": "5ad411a83490f219c42784cd"
+        }
+    ],
+    "_id": "5ad411a83490f219c42784d6",
+    "name": "TestStore",
+    "contact_info": {
+        "_id": "5ad411a83490f219c42784ca",
+        "phone": 11995555555,
+        "email": "testStore@store.com",
+        "website": "testStore.com"
+    },
+    "address_info": {
+        "_id": "5ad411a83490f219c42784cb",
+        "street": "123 Store st",
+        "city": "Orlando",
+        "state": "Fl",
+        "zip": 32832
+    },
+    "createdAt": "2018-04-16T02:59:52.481Z",
+    "updatedAt": "2018-04-16T02:59:52.485Z",
+    "__v": 0,
+    "objects": {
+        "model": "D:\\mARkit\\API\\stores\\TestStore\\models",
+        "_id": "5ad411a83490f219c42784d7"
+    }
+}
+
+{
+    "comments": [
+        {
+            "comment": "This is ok...",
+            "author_id": "5ad3f7958699a915dce4d4be",
+            "author": "user",
+            "_id": "5ad515b91c50581708555d79",
+            "createdAt": "2018-04-16T21:29:29.729Z",
+            "updatedAt": "2018-04-16T21:29:29.729Z"
+        }
+    ],
+    "_id": "5ad50c79d4b7651fd46a43e4",
+    "storename": "TestStore",
+    "name": "Cow",
+    "path": "D:\\mARkit\\API\\stores\\TestStore\\models\\Cow.tar.gz",
+    "url": "http://markitapi.com/objects/TestStore/Cow.tar.gz",
+    "createdAt": "2018-04-16T20:50:01.753Z",
+    "updatedAt": "2018-04-16T21:29:29.729Z",
+    "__v": 10,
+    "description": "This be cow."
+}
+
+[
+    {
+        "comments": [],
+        "_id": "5ad4ed6b3f99431c6433a5cd",
+        "storename": "TestStore",
+        "name": "Cow",
+        "path": "D:\\mARkit\\API\\stores\\TestStore\\models\\Cow.tar.gz",
+        "url": "http://markitapi.com/objects/TestStore/Cow.tar.gz",
+        "createdAt": "2018-04-16T18:37:31.587Z",
+        "updatedAt": "2018-04-16T18:37:31.664Z",
+        "__v": 0,
+        "description": "This be cow."
+    }
+]
