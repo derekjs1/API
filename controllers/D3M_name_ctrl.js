@@ -8,9 +8,10 @@ var express = require('express')
     , Promise = require('bluebird')
     , tar = require('tar-fs')
     , util = require('util')
-    , zlib = require('zlib');
+    , zlib = require('zlib')
+	, multiparty = require('multiparty');
+//	, busboy = require('connect-busboy');
 
-    
 const exists = util.promisify(fs.exists);
 const readdir = util.promisify(fs.readdir);
 const lstat = util.promisify(fs.lstat);
@@ -63,19 +64,67 @@ var object_name_ctrl = ((D3M)=>{
 
     // Returning actual object itself
     var get = ((req,res,next) =>{
+		
         var obj_file = String(req.params.object);
+        var sub = obj_file.substr(obj_file.length - 7, obj_file.length);
+        // if (sub != '.tar.gz' || sub !=)
+        //     res.status(400).json({err: 'Incorrect file extension'});
         
-        if (obj_file.substr(obj_file.length - 7, obj_file.length) != '.tar.gz')
-            res.status(400).json({err: 'Incorrect file extension specification, missing gzip'});
-        
-        var obj_name = obj_file.substring(0, obj_file.length - 7);
+        var obj_name;
+        if (sub == '.tar.gz'){
+            obj_name = obj_file.substring(0, obj_file.length - 7);
+        }
+        else {
+            obj_name = obj_file.substr(0, obj_file.length - 4);
+        }
 
         D3M.findOne({storename: req.params.name,
             name: obj_name}).then((object)=>
-        {
-            res.setHeader('Content-Type' , 'application/gzip');
-            res.statusCode = 200;
-            res.sendFile(object.path);
+        {   
+            if (obj_file.substr(obj_file.length - 3, obj_file.length) != '.gz')
+            {
+                res.statusCode = 200;
+                res.sendFile(object.thumbnail.path);
+            }
+            else
+            {
+                res.statusCode = 200;
+                res.setHeader('Content-Type' , 'application/gzip');
+                res.sendFile(object.path);
+            }
+        }
+        , (err) => next(err)).catch((err) => next(err));
+    });
+
+    var post_logo = ((req,res,next) =>{
+        var tempFile = req.files.file;
+        var filename = String(tempFile.name);
+        var store = req.params.name;
+        var obj = req.params.object;
+        var end = filename.substr(filename.length - 4, filename.length);
+
+        if (!tempFile)
+            return res.status(400).send('Error, failed to upload logo');
+
+        D3M.findOne({storename:store, name: obj})
+        .then((object)=>{
+
+            var n_url = String(base_url + object.storename + '/' + object.name + end);
+            var temp = String(object.path);
+            var n_path = temp.substr(0, temp.length-7) + end;
+
+            object.thumbnail.set({url:n_url, path: n_path});
+
+            object.save((object_up)=>{
+                
+                tempFile.mv(n_path)
+                .then((err)=>{
+                    res.status(200);
+                    res.json(object_up);                   
+                },
+                err => next(err));
+            },
+            err => next(err));
         }
         , (err) => next(err)).catch((err) => next(err));
     });
@@ -87,10 +136,10 @@ var object_name_ctrl = ((D3M)=>{
         var store = req.params.name;
         var mdl = req.params.object;
         var valid_update = validate_update(data);
-
+		
         if (!tempFile || !store || !valid_update)
            return res.status(500).send('No files were uploaded');
-        
+	    
         Store.findOne({name: store})
         .then((stores)=>{
 
@@ -108,23 +157,22 @@ var object_name_ctrl = ((D3M)=>{
                 }
 
                 var src = String(first_dir + '.tar.gz');
+                var path = String(first_dir);
                 var url_src = String(base_url + stores.name + '/' + req.params.object + '.tar.gz');
 
-                var obj = new D3M({storename: store,
-                    name: mdl,
-                    path: src,
-                    url: url_src});
-                            
-                obj.save().then((d3m_obj) =>{
+                D3M.create({storename: store,
+                    name: mdl, path: src, url: url_src, thumbnail: {url:base_url, path: first_dir}})
+                .then((d3m_obj) =>{
                     res.setHeader('Content-Type' , 'application/json');
                     res.statusCode = 200;
                     res.json(d3m_obj);
                 },(err) => next(err)).catch((err) => next(err));
+    
 
             },(err) => next(err)).catch((err) => next(err));
         }       
         ,(err) => next(err)).catch((err) => next(err));
-    });
+	});
 
     // TODO: Need method for filtering data and validating a store is the user only authorized updates for this object
     var put = ((req,res,next) =>{
@@ -170,6 +218,7 @@ var object_name_ctrl = ((D3M)=>{
         get_all: get_all,
         get: get,
         post: post,
+        post_logo: post_logo,
         put: put,
         del: del
     }

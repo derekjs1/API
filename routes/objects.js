@@ -2,7 +2,8 @@
 var express = require('express')
     , file = require('express-fileupload')
     , authenticate = require('../authenticate')
-    , path = require('path');
+    , path = require('path')
+	, busboy = require('connect-busboy');
 
 var route = ((D3M) =>{
     
@@ -10,11 +11,13 @@ var route = ((D3M) =>{
         , ouc = require('../controllers/D3M_user_ctrl')(D3M)
         , onc = require('../controllers/D3M_name_ctrl')(D3M);
         D3M_rt.use(file());
+		//D3M_rt.use(busboy());
 
     D3M_rt
         .get('/:name', onc.get_all)
         .get('/:name/:object', onc.get)
         .post('/:name/:object',authenticate.verifyUser, onc.post)
+        .post('/:name/:object/logo', authenticate.verifyUser, onc.post_logo)
         .put('/:name/:object',authenticate.verifyUser, onc.put)
         .delete('/:name/:object',authenticate.verifyUser, onc.del);
 

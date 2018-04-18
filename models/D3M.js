@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 //require('mongoose-currency');
 var Schema = mongoose.Schema;
+var path = require('path');
 //var Currency = mongoose.Types.Currency;
 
 var comment_schema = new Schema({
@@ -23,6 +24,19 @@ var comment_schema = new Schema({
     }
 }, {
     timestamps: true
+});
+
+var logo_schema = new Schema({
+        url :{
+            type: String,
+            required: false,
+            default: 'http://markitapi.com/public/default.jpg'
+        },
+        path : {
+            type: String,
+            required: false,
+            default: path.join(__dirname, '..', 'stores', 'default', 'default.jpg')
+        }
 });
 
 var d3m_schema = new Schema({
@@ -48,6 +62,7 @@ var d3m_schema = new Schema({
         type: String,
         required: false
     },
+    thumbnail: logo_schema,
     price: {
         type: String,//Currency,
    //     required: true,

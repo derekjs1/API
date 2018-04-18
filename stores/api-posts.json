@@ -1,0 +1,9 @@
+{"name" : "TestStore", 
+"gps":{"longitude":28.602928, "latitude": -81.200151},
+"contact_info": {"phone" : 11995555555,"email" : "testStore@store.com","website" : "testStore.com"}, 
+"address_info" :{"street": "123 Store st","city": "Orlando", "state": "Fl", "zip" : 32832},
+"business_hrs":[{"day": "Mon","hours":[{"open": 8,"open_min" : 8,"closed" : 8, "closed_min": 8}]},
+{"day": "Tue","hours":[{"open": 8,"open_min" : 8,"closed" : 8, "closed_min": 8}]},
+{"day": "Wed","hours":[{"open": 8,"open_min" : 8,"closed" : 8, "closed_min": 8}]},
+{"day": "Thu","hours":[{"open": 8,"open_min" : 8,"closed" : 8, "closed_min": 8}]},
+{"day": "Fri","hours":[{"open": 8,"open_min" : 8,"closed" : 8, "closed_min": 8}]}]}
